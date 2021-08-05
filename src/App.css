@@ -1,0 +1,22 @@
+.App {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.App main {
+    display: flex;
+    height: 100vh;
+}
+
+.App .nav-button {
+    color: blue;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+}

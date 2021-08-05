@@ -1,0 +1,33 @@
+.Launch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.Launch .icon {
+    width: 60px;
+    height: 60px;
+}
+
+.Launch .details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 30px;
+}
+
+.Launch .details .name {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.Launch .details .date {
+    font-size: 0.75em;
+    color: #a6a6a6;
+}
+
+.Launch .status {
+    margin-left: 50px;
+}
