@@ -1,25 +1,18 @@
 import React from "react";
 import "./YearsBar.css";
+import { MenuItem } from './MenuItem';
 
-function YearsBar() {
+function YearsBar({ years, handleClick }) {
   return (
     <div className="YearsBar">
       <ul className="menu">
-        <li className="menu-item">
-          <button className="nav-button">2016</button>
-        </li>
-        <li className="menu-item">
-          <button className="nav-button">2017</button>
-        </li>
-        <li className="menu-item">
-          <button className="nav-button">2018</button>
-        </li>
-        <li className="menu-item">
-          <button className="nav-button">2019</button>
-        </li>
-        <li className="menu-item">
-          <button className="nav-button">2020</button>
-        </li>
+        {years.map((year) => (
+          <MenuItem
+            key={year}
+            label={year}
+            onClickHandle={() => handleClick(year)}
+          />
+        ))}
       </ul>
     </div>
   );

@@ -24,19 +24,17 @@ const isNASAMission = (data) => (
  *  "payloads_count": number;
  * }>}
  */
-const prepareData = (payloads) => (
+export const prepareData = (payloads, filterFunction) => (
   payloads
     .sort((a, b) => (
       b.rocket.second_stage.payloads.length - a.rocket.second_stage.payloads.length || b.launch_date_unix - a.launch_date_unix
     ))
     .reduce((preparedData, payload) => (
-      isNASAMission(payload)
+      filterFunction(payload)
         ? [
           ...preparedData,
           {
-            mission_name: payload.mission_name,
-            flight_number: payload.flight_number,
-            payloads_count: payload.rocket.second_stage.payloads.length,
+            ...payload
           }
         ] : preparedData
     ), [])
@@ -55,9 +53,3 @@ const renderData = (output) => {
   const container = document.getElementById("out");
   container.innerHTML = JSON.stringify(output, null, 2);
 }
-
-module.exports = {
-  prepareData,
-  renderData,
-  loadData,
-};

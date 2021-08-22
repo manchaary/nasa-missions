@@ -2,10 +2,10 @@ import React from "react";
 import Launch from "./Launch";
 import "./Launches.css";
 
-function Launches() {
+function Launches({ data }) {
   return (
     <div className="Launches">
-      <Launch/>
+      {data.map(launch => <Launch key={launch.mission_name} data={launch} />)}
     </div>
   );
 }

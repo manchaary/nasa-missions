@@ -1,25 +1,18 @@
 import React from "react";
 import "./Sidebar.css";
+import { MenuItem } from './MenuItem';
 
-function Sidebar() {
+function Sidebar({ customers, handleClick }) {
   return (
     <aside className="Sidebar">
       <ul className="menu">
-        <li className="menu-item">
-          <button className="nav-button">LEO</button>
-        </li>
-        <li className="menu-item active">
-          <button className="nav-button">NASA</button>
-        </li>
-        <li className="menu-item">
-          <button className="nav-button">NRO</button>
-        </li>
-        <li className="menu-item">
-          <button className="nav-button">ORS</button>
-        </li>
-        <li className="menu-item">
-          <button className="nav-button">SpaceX</button>
-        </li>
+        {customers.length ? customers.map((customer) => (
+          <MenuItem
+            key={customer}
+            label={customer}
+            onClickHandle={() => handleClick(customer)}
+          />
+        )) : 'Loading...'}
       </ul>
     </aside>
   );

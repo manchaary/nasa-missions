@@ -1,17 +1,17 @@
 import React from "react";
 import "./Launch.css";
 
-function Launch() {
+function Launch({ data }) {
   return (
     <div className="Launch">
-      <img className="icon" alt="" src="http://placehold.it/60"/>
+      <img className="icon" alt="" src={data.links.mission_patch_small}/>
       <div className="details">
-        <h3 className="name">FalconSat</h3>
-        <span className="rocket">Falcon 1 - Merlin A</span>
-        <span className="date">04.06.2016 18:45</span>
+        <h3 className="name">{data.mission_name}</h3>
+        <span className="rocket">{data.rocket.rocket_name}</span>
+        <span className="date">{new Date(data.launch_date_unix * 1000).toLocaleDateString()}</span>
       </div>
-      <span className="payloads">3 payloads</span>
-      <span className="status">Success</span>
+      <span className="payloads">{data.rocket.second_stage.payloads.length} payloads</span>
+      <span className="status" title={data.details}>{data.launch_success ? 'Success' : 'Failed'}</span>
     </div>
   );
 }
